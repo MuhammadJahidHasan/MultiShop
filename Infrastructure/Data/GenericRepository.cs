@@ -31,9 +31,9 @@ namespace Infrastructure.Data
             return await ApplySpecification(spec).ToListAsync();
         }
 
-           public Task<T> GetWithEntitySpec(ISpecification<T> spec)
+           public async Task<T> GetWithEntitySpec(ISpecification<T> spec)
         {
-            throw new System.NotImplementedException();
+                return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec){

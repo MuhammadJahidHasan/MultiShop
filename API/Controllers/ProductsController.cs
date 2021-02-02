@@ -27,17 +27,17 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts()
         {
-            var product = new ProductsWithTypeAndBrand();
+            var spec = new ProductsWithTypeAndBrand();
 
-            return Ok(await _repo.ListAllAsyncWithSpec(product));
+            return Ok(await _repo.ListAllAsyncWithSpec(spec));
         }
 
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-
-            return Ok(await _repo.GetByIdAsync(id));
+            var spec = new ProductsWithTypeAndBrand(id);
+            return Ok(await _repo.GetWithEntitySpec(spec));
         }
 
          [HttpGet("types")]
