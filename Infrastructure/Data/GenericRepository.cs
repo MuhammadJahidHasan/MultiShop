@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specification;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
@@ -23,5 +25,23 @@ namespace Infrastructure.Data
         {
             return await _context.Set<T>().ToListAsync();
         }
+
+        public async Task<IReadOnlyList<T>> ListAllAsyncWithSpec(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
+        }
+
+           public Task<T> GetWithEntitySpec(ISpecification<T> spec)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec){
+
+              return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+
+        }
+      
+
     }
 }
