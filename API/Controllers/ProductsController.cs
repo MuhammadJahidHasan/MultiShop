@@ -25,9 +25,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(
+            [FromQuery] ProductSpecPrams proPrams)
         {
-            var spec = new ProductsWithTypeAndBrand();
+            var spec = new ProductsWithTypeAndBrand(proPrams);
 
             return Ok(await _repo.ListAllAsyncWithSpec(spec));
         }
