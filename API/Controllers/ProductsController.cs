@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.Helpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
@@ -25,12 +26,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(
+        public async Task<ActionResult<Pagination<Product>>> GetProducts(
             [FromQuery] ProductSpecPrams proPrams)
         {
             var spec = new ProductsWithTypeAndBrand(proPrams);
+            var countSpec = new ProductWithFilteringCount(proPrams);
+            var totalItems = await _repo.CountAsync(countSpec);
+            var data = await _repo.ListAllAsyncWithSpec(spec);
 
-            return Ok(await _repo.ListAllAsyncWithSpec(spec));
+            return Ok(new Pagination<Product>(proPrams.PageIndex, proPrams.PageSize, 
+                   totalItems, data));
         }
 
 
