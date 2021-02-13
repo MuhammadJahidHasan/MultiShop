@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Helpers;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specification;
@@ -15,14 +16,17 @@ namespace API.Controllers
         private readonly IGenericRepository<Product> _repo;
         private readonly IGenericRepository<ProductType> _typerepo;
         private readonly IGenericRepository<ProductBrand> _brandrepo;
+        private readonly IMapper _mapper;
 
         public ProductsController(IGenericRepository<Product> repo,
         IGenericRepository<ProductType> typerepo,
-        IGenericRepository<ProductBrand> brandrepo)
+        IGenericRepository<ProductBrand> brandrepo,
+        IMapper mapper)
         {
             _repo = repo;
             _typerepo = typerepo;
            _brandrepo = brandrepo;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -32,8 +36,9 @@ namespace API.Controllers
             var spec = new ProductsWithTypeAndBrand(proPrams);
             var countSpec = new ProductWithFilteringCount(proPrams);
             var totalItems = await _repo.CountAsync(countSpec);
-            var data = await _repo.ListAllAsyncWithSpec(spec);
-
+            var products = await _repo.ListAllAsyncWithSpec(spec);
+             var data = _mapper
+                 .Map<IReadOnlyList<Product>, IReadOnlyList<Product>>(products);
             return Ok(new Pagination<Product>(proPrams.PageIndex, proPrams.PageSize, 
                    totalItems, data));
         }

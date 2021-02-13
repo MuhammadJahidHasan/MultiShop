@@ -10,10 +10,10 @@
   },
   {
     "Id" : 2,
-    "Name": "Oppo A15",
+    "Name": "Oppo A53",
     "Description": "It is good phone",
-    "Price": 14999.99,
-    "ImageUrl": "images/products/oppo15.png",
+    "Price": 18990,
+    "ImageUrl": "images/products/oppo.png",
     "ProductTypeId": 1,
     "ProductBrandId": 6
   },
@@ -21,26 +21,26 @@
     "Id" : 3,
     "Name": "MT 15",
     "Description": "It is a naked sport bike",
-    "Price": 480000.00,
+    "Price": 480000,
     "ImageUrl": "images/products/mt15.png",
     "ProductTypeId": 3,
     "ProductBrandId": 2
   },
   {
     "Id" : 4,
-    "Name": "Samsung M20",
+    "Name": "Samsung Galaxy A30s",
     "Description": "This is a buget smartphone",
-    "Price": 12999.99,
-    "ImageUrl": "images/products/sam20.png",
+    "Price": 20999,
+    "ImageUrl": "images/products/sam.png",
     "ProductTypeId": 1,
     "ProductBrandId": 5
   },
   {
     "Id" : 5,
-    "Name": "Spinuts",
+    "Name": "Spinach",
     "Description": "It has good fiber",
-    "Price": 150.00,
-    "ImageUrl": "images/products/spinuts.png",
+    "Price": 150,
+    "ImageUrl": "images/products/spinach.png",
     "ProductTypeId": 4,
     "ProductBrandId": 7
   },
@@ -48,7 +48,7 @@
     "Id" : 6,
     "Name": "Legion 20",
     "Description": "It is good bycycle",
-    "Price": 13990.90,
+    "Price": 13990,
     "ImageUrl": "images/products/leg20.png",
     "ProductTypeId": 5,
     "ProductBrandId": 9
@@ -57,14 +57,14 @@
     "Id" : 7,
     "Name": "Ideapad 302",
     "Description": "It is core i3 laptop",
-    "Price": 38550.50,
+    "Price": 38550,
     "ImageUrl": "images/products/idea302.png",
     "ProductTypeId": 2,
     "ProductBrandId": 3
   },
   {
     "Id" : 8,
-    "Name": "Goat Meat",
+    "Name": "Meat",
     "Description": "It is organic",
     "Price": 1000,
     "ImageUrl": "images/products/gomeat.png",
@@ -75,7 +75,7 @@
     "Id" : 9,
     "Name": "EliteBook 840 G4",
     "Description": "It is core i5 laptop",
-    "Price": 65000.10,
+    "Price": 65000,
     "ImageUrl": "images/products/elite.png",
     "ProductTypeId": 2,
     "ProductBrandId": 4
@@ -84,9 +84,10 @@
     "Id" : 10,
     "Name": "Deshi Chiken",
     "Description": "It is pure and tasty",
-    "Price": 250.20,
+    "Price": 250,
     "ImageUrl": "images/products/chiken.png",
     "ProductTypeId": 4,
     "ProductBrandId": 8
   }
+  
 ]
